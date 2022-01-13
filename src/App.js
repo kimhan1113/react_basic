@@ -1,7 +1,26 @@
 import "./App.css";
 import { Button } from "antd";
 import React from "react";
+import PropTypes from "prop-types";
+import ThemedButton from "./ThemedButton";
 // import "antd/dist/antd.css";
+
+class PostDetail extends React.Component {
+  static propTypes = {
+    postId: PropTypes.number.isRequired,
+  };
+
+  render() {
+    const { postId } = this.props;
+    return (
+      <div>
+        포스팅 #{postId}
+        <hr />
+        포스팅 내용 ....
+      </div>
+    );
+  }
+}
 
 const actions = {
   init(initialValue) {
@@ -39,19 +58,32 @@ class Counter1 extends React.Component {
   }
 }
 
-function App() {
-  return (
-    // <div>
-    //   <button>Hello, React...</button>
-    //   <Button type="primary" onClick={() => console.log("clicked")}>
-    //     hello, Antd.
-    //   </Button>
-    // </div>
-
-    <div>
-      <Counter1 initialValue={10} />
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    postId: 1,
+  };
+  render() {
+    return (
+      <div>
+        <ThemedButton theme="success" label="say helo" />
+        <PostDetail postId={10} />
+        <Counter1 initialValue={10} />
+      </div>
+    );
+  }
 }
+
+// function App() {
+//   state = {
+//     postId:1
+//   }
+
+//   return (
+//     <div>
+//       <PostDetail postId={10} />
+//       <Counter1 initialValue={10} />
+//     </div>
+//   );
+// }
 
 export default App;
