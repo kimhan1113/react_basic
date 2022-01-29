@@ -34,15 +34,33 @@ const useWindowWidth = () => {
   return width;
 };
 
+const useWindowHeight = () => {
+  const [height, setHeight] = useState(window.innerHeight);
+
+  //   useEffect(() => {
+  //     const onResize = () => {
+  //       setHeight(window.innerHeight);
+  //     };
+
+  //     window.addEventListener("resize", onResize);
+  //     return () => window.removeEventListener("resize", onResize);
+  //   }, []);
+
+  return height;
+};
+
 const App = () => {
   const currentTime = useCurrentTime();
   const windowWidth = useWindowWidth();
+  const windowHeight = useWindowHeight();
   return (
     <div>
       <h1>현재시각</h1>
       {currentTime}
       <h1>current window width</h1>
       {windowWidth}px
+      <h1>current window height</h1>
+      {windowHeight}px
     </div>
   );
 };
